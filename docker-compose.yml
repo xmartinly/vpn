@@ -2,8 +2,7 @@ version: '3.7'
 services:
   # Shadowsocks
   shadowsocks:
-    build:
-      context: ./shadowsocks
+    image: shadowsocks/shadowsocks-libev
     container_name: shadowsocks
     ports:
       - 38531:8388
