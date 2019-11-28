@@ -20,7 +20,7 @@ services:
     container_name: 'my-squid'
     restart: always
     ports:
-      - '3128:3128'
+      - 38536:3128
   # XL2TP
   # l2tp:
   #   build:
