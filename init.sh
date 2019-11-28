@@ -11,6 +11,7 @@ systemctl enable docker.service && systemctl start docker.service
 
 systemctl enable firewalld && systemctl restart firewalld
 firewall-cmd --permanent --add-port=38531-38536/tcp
+firewall-cmd --permanent --add-port=28531/tcp
 firewall-cmd --permanent --add-port=38531-38536/udp
 firewall-cmd --permanent --add-service=http
 firewall-cmd --permanent --add-service=https
