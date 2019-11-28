@@ -14,7 +14,13 @@ services:
       - METHOD=aes-256-gcm
       - PASSWORD=diabloly
     restart: always
-
+  # HTTP PROXY
+  squid:
+    image: 'b4tman/squid'
+    container_name: 'my-squid'
+    restart: always
+    ports:
+      - '3128:3128'
   # XL2TP
   # l2tp:
   #   build:
