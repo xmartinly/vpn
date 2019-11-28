@@ -2,10 +2,14 @@ version: '3.7'
 services:
   # Shadowsocks
   shadowsocks:
-    image: shadowsocks/shadowsocks-libev
-    container_name: shadowsocks
+    build:
+      context: ./shadowsocks
+    container_name: ss-libev
     ports:
-      - 38531:8388
+      - 38531:38531/tcp
+      - 38531:38531/udp
+    volumes:
+      - ./shadowsocks:/etc/shadowsocks-libev
     environment:
       - METHOD=aes-256-gcm
       - PASSWORD=diabloly
