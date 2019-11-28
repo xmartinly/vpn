@@ -3,7 +3,7 @@ sed -i "s/SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 yum install -y yum-utils && yum-config-manager --enable epel
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-#yum clean all && yum makecache fast && yum update -y
+yum clean all && yum makecache fast && yum update -y
 yum install docker-ce zip unzip curl wget git -y
 systemctl enable docker.service && systemctl start docker.service
 
