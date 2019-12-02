@@ -1,7 +1,7 @@
 {
     "server":"0.0.0.0",
-    "server_port":38531,
-    "password":"diabloly",
+    "server_port":38532,
+    "password":"3diabloly1",
     "timeout":300,
     "method":"aes-256-gcm",
     "nameserver":"8.8.8.8",
