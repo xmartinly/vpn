@@ -2,34 +2,33 @@ version: '3.7'
 services:
   # Shadowsocks
   shadowsocks:
-    build:
-      context: ./shadowsocks
-    container_name: ss-libev
+    image: teddysun/shadowsocks-libev
+    container_name: ss
     ports:
-      - 38531:38531/tcp
-      - 38531:38531/udp
+      - 38532:38532/tcp
+      - 38532:38532/udp
     volumes:
       - ./shadowsocks:/etc/shadowsocks-libev
-    environment:
-      - METHOD=aes-256-gcm
-      - PASSWORD=diabloly
     restart: always
-  # HTTP PROXY
-  squid:
-    image: 'b4tman/squid'
-    container_name: 'my-squid'
-    restart: always
+  # Shadowsocks-R
+  shadowsocks-r:
+    image: teddysun/shadowsocks-r
+    container_name: ss-r
     ports:
-      - 38536:3128
-  # XL2TP
-  # l2tp:
-  #   build:
-  #     context: ./l2tp
-  #   container_name: l2tp
-  #   env_file:
-  #     - ./l2tp/l2tp.env
-  #   ports:
-  #     - 4500:4500/udp
-  #     - 500:500/udp
-  #   restart: always
-  #   privileged: true
+      - 38533:38533/tcp
+      - 38533:38533/udp
+    volumes:
+      - ./shadowsocks-r:/etc/shadowsocks-r
+    restart: always
+  # XL2TPD
+  xl2tp:
+    image: teddysun/l2tp
+    container_name: l2tp
+    ports:
+      - 500:500/udp
+      - 4500:4500/udp
+      - 1701:1701/tcp
+    restart: always
+    env_file:
+      - ./l2tp/l2tp.env
+    privileged: true
